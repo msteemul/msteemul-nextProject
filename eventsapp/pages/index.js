@@ -22,7 +22,7 @@ export default function Home() {
           <a href='/events'>Events</a>
           <a href='/about-us'>About Us</a>
         </nav>
-      </header>
+      </header> 
 
       <main className={styles.main}>
        
