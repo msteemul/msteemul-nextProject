@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home({data}) {
+export default function Home({ data }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -69,12 +69,12 @@ export default function Home({data}) {
   );
 }
 
-export async function getServerSideProps(){
-  const {events_categories} = await import ('/data/data.json');
+export async function getServerSideProps() {
+  const { events_categories } = await import('/data/data.json');
   console.log(events_categories);
-  return{
-      props:{
-          data: events_categories
-      },
+  return {
+    props: {
+      data: events_categories,
+    },
   };
 }
