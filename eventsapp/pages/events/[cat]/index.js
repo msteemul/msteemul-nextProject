@@ -11,3 +11,14 @@ const EventsCatPage = () => {
   );
 };
 export default EventsCatPage;
+
+
+export async function getStaticPath(){
+  return{
+    path:[
+      {params:{
+        cat:'123',
+      }}
+    ]
+  }
+}
