@@ -1,21 +1,5 @@
-import Image from 'next/image';
-import Link from 'next/link';
-const EventsCatPage = ({ data, pageName }) => {
-  return (
-    <div>
-      <h1>Events in {pageName}</h1>
-      <div>
-        {data.map((e) => (
-          <Link key={e.id} href={`/events/${e.city}/${e.id}`} passHref>
-            <Image width={300} height={300} alt={e.title} src={e.image} />
-            <h2>{e.title}</h2>
-            <p>{e.description}</p>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
+import CatEvent from '../../../src/components/events/catEvent';
+const EventsCatPage = ({ data, pageName }) => <CatEvent data={data} pageName={pageName}/>;
 export default EventsCatPage;
 
 //used to specify how many paths we'll use this template for
