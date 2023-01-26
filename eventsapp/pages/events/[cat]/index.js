@@ -1,5 +1,5 @@
 import CatEvent from '../../../src/components/events/catEvent';
-const EventsCatPage = ({ data, pageName }) => <CatEvent data={data} pageName={pageName}/>;
+const EventsCatPage = ({ data, pageName }) => <CatEvent data={data} pageName={pageName} />;
 export default EventsCatPage;
 
 //used to specify how many paths we'll use this template for

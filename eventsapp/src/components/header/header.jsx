@@ -20,7 +20,7 @@ export const Header = () => (
           </ul>
         </nav>
       </div>
-      <p className='title'>Events App</p>
+      <p className="title">Events App</p>
     </div>
   </header>
 );
