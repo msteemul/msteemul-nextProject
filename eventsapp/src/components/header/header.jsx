@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import HeaderLeft from '../header/header-left';
 
 export const Header = () => (
   <header>
     <div>
       <div className="topNav">
-        <Image alt="logo" src={'/images/OSKHFO0.jpg'} width={50} height={50} />
+        <HeaderLeft />
         <nav>
           <ul>
             <li>
@@ -20,7 +20,6 @@ export const Header = () => (
           </ul>
         </nav>
       </div>
-      <p className="title">Events App</p>
     </div>
   </header>
 );
