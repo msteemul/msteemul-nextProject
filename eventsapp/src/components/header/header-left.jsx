@@ -7,7 +7,7 @@ const HeaderLeft = () => {
     <div>
       <Link href="/" className="left-nav">
         <span>
-          <Image alt="logo" src={'/images/OSKHFO0.jpg'} width={50} height={50} />
+          <Image alt="logo" src={'/images/AvatarMaker.png'} width={50} height={50} />
         </span>
         <span className="title">Events App</span>
       </Link>
