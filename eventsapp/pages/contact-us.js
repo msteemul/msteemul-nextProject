@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const ContactUs = () => {
-  return (
-    <div>contact-us Page</div>
-  )
-}
+  return <div>contact-us Page</div>;
+};
 
-export default ContactUs
+export default ContactUs;
