@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleEvent = ({ data }) => {
+  const notify = (message) => toast(`${message}`);
   const inputEmail = useRef();
   const router = useRouter();
   const [message, setMessage] = useState('');
@@ -31,7 +34,8 @@ const SingleEvent = ({ data }) => {
       if (!response.ok) throw new Error(`Error: ${response.status}`);
       const data = await response.json();
       setMessage(data.message);
-      inputEmail.current.value = ''; //setting input field value to empty string
+      inputEmail.current.value = '';
+      notify(message); //setting input field value to empty string
     } catch (e) {
       console.log('ERROR', e);
     }
@@ -47,7 +51,20 @@ const SingleEvent = ({ data }) => {
         <input ref={inputEmail} type="email" id="email" placeholder="Please insert your email here" />
         <button type="submit"> Submit</button>
       </form>
-      <p>{message}</p>
+      {/* <p>{message}</p> */}
+      <ToastContainer
+        className="toast.success"
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
