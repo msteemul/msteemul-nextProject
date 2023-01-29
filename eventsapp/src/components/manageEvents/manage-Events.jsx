@@ -12,7 +12,7 @@ const ManageEvents = () => {
   const EventImage = useRef();
   const [message, setMessage] = useState('');
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +20,11 @@ const ManageEvents = () => {
     const EventCityVal = EventCity.current.value;
     const EventDescriptionVal = EventDescription.current.value;
     const EventImageVal = EventImage.current.value;
-    const eventId = router?.query.id;
+    // const eventId = router?.query.id;
+    // console.log(EventNameVal);
+    // console.log(EventCityVal);
+    // console.log(EventDescriptionVal);
+    // console.log(EventImageVal);
     try {
       const response = await fetch('/api/add-events', {
         //hitting api endpoint
@@ -29,14 +33,14 @@ const ManageEvents = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          id:EventNameVal,
           EventName: EventNameVal,
-          eventId,
           EventCity: EventCityVal,
           EventDescription: EventDescriptionVal,
           EventImage: EventImageVal,
         }),
       });
-      if (!response.ok) throw new Error(`Error: ${response.status}`);
+      if (!response.ok) throw new Error(`Error: ${response.status}  Error on api`);
       const data = await response.json();
       setMessage(data.message);
       EventName.current.value = '';

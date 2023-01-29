@@ -25,15 +25,31 @@ export default function add(req, res) {
 
   if (method === 'POST') {
     console.log(req.body);
-    const { id, title, city, description, image, emails_registered } = req.body;
-    const newEvent = {
-      id: title,
-      title: title,
-      city: city,
-      description: description,
-      image: image,
-      emails_registered: [],
-    };
+    const { id, title, city, description, image } = req.body;
+
+    const newAllEvents = allEvents.map((ev) => {
+      if(ev.id === id){
+        res.status(409).json({ message: 'This event already exists' });
+        return ev;
+      }return {
+          ...ev,
+          id: id,
+          title: title,
+          city: city,
+          description: description,
+          image: image,
+          emails_registered: [],
+        };
+    })
+    // const newEvent = {
+    //   id: id,
+    //   title: title,
+    //   city: city,
+    //   description: description,
+    //   image: image,
+    //   emails_registered: [],
+    // };
+    // console.log(newEvent);
 
     // const AllEventsCheck = allEvents.map((ev) => {
     //   if (ev.id === id) {
@@ -43,11 +59,12 @@ export default function add(req, res) {
     //     ...allEvents.append(newEvent),
     //   }
     // });
-    const AllEventsCheck = (allEvents) =>{
-        allEvents.push(newEvent);
-        return allEvents;
-    }
-    fs.writeFileSync(filePath, JSON.stringify({ events_categories, allEvents: AllEventsCheck }));
+    // const AllEventsCheck = (allEvents) =>{
+    //     allEvents.push(newEvent);
+    //     return allEvents;
+    // }
+    // fs.writeFileSync(filePath, JSON.stringify({ events_categories, allEvents: newAllEvents }));
+    //PLEASE BE CAREFUL WHEN USING THIS FUNCTION, IT WILL OVERWRITE YOUR DATA.JSON FILE
     res.status(201).json({
       message: `${title} has been added successfully hosted!`,
     });
