@@ -25,28 +25,40 @@ export default function add(req, res) {
 
   if (method === 'POST') {
     console.log(req.body);
-    const { id, title, city, description, image } = req.body;
+    const { id, EventName, EventCity, EventDescription, EventImage } = req.body;
 
-    const newAllEvents = allEvents.map((ev) => {
-      if(ev.id === id){
-        res.status(409).json({ message: 'This event already exists' });
-        return ev;
-      }return {
-          ...ev,
-          id: id,
-          title: title,
-          city: city,
-          description: description,
-          image: image,
-          emails_registered: [],
-        };
-    })
+    // const newAllEvents = allEvents.map((ev) => {
+    //   if(ev.id === id){
+    //     res.status(409).json({ message: 'This event already exists' });
+    //     return ev;
+    //   }return {
+    //       ...ev,
+    //       id: id,
+    //       title: EventName,
+    //       city: EventCity,
+    //       description: EventDescription,
+    //       image: EventImage,
+    //       emails_registered: [],
+    //     };
+    // })
+
+    // const newAllEvents = (allEvents) => {
+    //   return {
+    //           ...allEvents,
+    //           id: id,
+    //           title: EventName,
+    //           city: EventCity,
+    //           description: EventDescription,
+    //           image: EventImage,
+    //           emails_registered: [],
+    //         };
+    // };
     // const newEvent = {
     //   id: id,
-    //   title: title,
-    //   city: city,
-    //   description: description,
-    //   image: image,
+    //   title: EventName,
+    //   city: EventCity,
+    //   description: EventDescription,
+    //   image: EventImage,
     //   emails_registered: [],
     // };
     // console.log(newEvent);
@@ -66,7 +78,7 @@ export default function add(req, res) {
     // fs.writeFileSync(filePath, JSON.stringify({ events_categories, allEvents: newAllEvents }));
     //PLEASE BE CAREFUL WHEN USING THIS FUNCTION, IT WILL OVERWRITE YOUR DATA.JSON FILE
     res.status(201).json({
-      message: `${title} has been added successfully hosted!`,
+      message: `${EventName} has been added successfully hosted!`,
     });
   }
 }
